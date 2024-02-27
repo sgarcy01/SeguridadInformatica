@@ -1,39 +1,41 @@
 import java.util.Scanner;
 
 public class Base10EncoderDecoder {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el mensaje en base 10: ");
-        String message = scanner.nextLine();
+        System.out.println("Ingrese la cadena en base 10:");
+        String cadena = scanner.nextLine();
 
-        //Codificacion
-        String encodedMessage = encodeBase10(message);
-        System.out.println("Mensaje codificado en base 10: "+encodedMessage);
+        // Codificación
+        String encodedMessage = encodeBase10(cadena);
+        System.out.println("Mensaje codificado: " + encodedMessage);
 
-        //Decodificacion
+        // Decodificación
         String decodedMessage = decodeBase10(encodedMessage);
-        System.out.println("Mensaje decodificado en base 10: "+decodedMessage);
-
+        System.out.println("Mensaje decodificado: " + decodedMessage);
     }
 
-    public static String encodeBase10(String message) {
+    public static String encodeBase10(String cadena) {
+        String alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ .";
         StringBuilder encoded = new StringBuilder();
-        for(char c : message.toCharArray()){
-            //con el (int) fuerzo al char a convertirse en un entero
-            int ascii = (int) c;
-            encoded.append(ascii).append(" ");           
+        String[] valores = cadena.split(",");
+        for (String valor : valores) {
+            int indice = Integer.parseInt(valor.trim());
+            encoded.append(alfabeto.charAt(indice));
         }
-        //Con el .trim elimino los espacios en blanco inciales y finales
-        return encoded.toString().trim();
+        return encoded.toString();
     }
 
-    public static String decodeBase10(String encodedMessage){
+    public static String decodeBase10(String encodedMessage) {
+        String alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ .";
         StringBuilder decoded = new StringBuilder();
-        String[] parts = encodedMessage.split(" ");
-        for(String part : parts){
-            int ascii = Integer.parseInt(part);
-            decoded.append((char) ascii);
+        for (int i = 0; i < encodedMessage.length(); i++) {
+            char caracter = encodedMessage.charAt(i);
+            int indice = alfabeto.indexOf(caracter);
+            decoded.append(indice).append(", ");
         }
+        // Elimina la coma adicional al final
+        decoded.setLength(decoded.length() - 2);
         return decoded.toString();
     }
 }
