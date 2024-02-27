@@ -1,0 +1,4 @@
+Compilar: javac MiPrograma.java
+Ejecutar: java MiPrograma
+Ejecutar con argumentos: java MiPrograma arg1 arg2
+
