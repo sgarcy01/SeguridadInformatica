@@ -16,7 +16,7 @@ public class Base10EncoderDecoder {
     }
 
     public static String encodeBase10(String cadena) {
-        String alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        String alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ .";
         StringBuilder encoded = new StringBuilder();
         String[] valores = cadena.split(",");
         for (String valor : valores) {
@@ -27,7 +27,7 @@ public class Base10EncoderDecoder {
     }
 
     public static String decodeBase10(String encodedMessage) {
-        String alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        String alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ .";
         StringBuilder decoded = new StringBuilder();
         for (int i = 0; i < encodedMessage.length(); i++) {
             char caracter = encodedMessage.charAt(i);
